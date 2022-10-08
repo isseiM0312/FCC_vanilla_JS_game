@@ -14,10 +14,10 @@ enemyImage.src = "enemy1.png";
 class Enemy {
     constructor() {
         this.image = new Image();
-        this.image.src = 'enemy3.png';
+        this.image.src = 'enemy4.png';
         this.speed = Math.random() * 4 + 1;
-        this.spriteWidth = 218;
-        this.spriteHeight = 177;
+        this.spriteWidth = 213;
+        this.spriteHeight = 213;
         this.width = this.spriteWidth / 2;
         this.height = this.spriteHeight / 2;
         this.x = Math.random() * (canvas.width-this.width);
@@ -26,17 +26,17 @@ class Enemy {
         this.newY = Math.random() * (canvas.height-this.height);
         this.frame = 0;
         this.flapSpeed = Math.floor(Math.random() * 3 + 1);
-        //this.curve = Math.random() * 200 + 50;
+        this.interval = Math.floor(Math.random() *200 + 50);
     }
     update(){
-        if (gameFrame % 30 === 0) {
+        if (gameFrame % this.interval === 0) {
             this.newX = Math.random() * (canvas.width-this.width);
             this.newY = Math.random() * (canvas.height-this.height);
         }
         let dx = this.x - this.newX;
         let dy = this.y - this.newY;
-        this.x -= dx;
-        this.y -= dy;
+        this.x -= dx/20;
+        this.y -= dy/20;
 
         this.angle += this.angleSpeed;
         if (gameFrame %this.flapSpeed === 0){
